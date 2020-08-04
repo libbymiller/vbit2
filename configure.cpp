@@ -291,6 +291,7 @@ int Configure::LoadConfigFile(std::string filename)
             }
         }
         filein.close();
+        delete header;
         return 0;
     } else {
         std::cerr << "[Configure::LoadConfigFile] open failed" << std::endl;

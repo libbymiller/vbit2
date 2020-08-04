@@ -35,6 +35,14 @@ TTXPage::TTXPage() :
     m_Loaded(false),
     _Selected(false)
 {
+    for (int i=0; i<=MAXROW; i++)
+    {
+        if (i > 0 && i < 25)
+            m_pLine[i]=new TTXLine("                                        "); // create all blank page rows now
+        else
+            m_pLine[i]=nullptr;
+    }
+    
     m_Init();
 }
 
@@ -52,6 +60,14 @@ TTXPage::TTXPage(std::string filename) :
     m_Loaded(false),
     _Selected(false)
 {
+    for (int i=0; i<=MAXROW; i++)
+    {
+        if (i > 0 && i < 25)
+            m_pLine[i]=new TTXLine("                                        "); // create all blank page rows now
+        else
+            m_pLine[i]=nullptr;
+    }
+    
     // std::cerr << "[TTXPage] file constructor loading " << filename<< std::endl;
     m_Init(); // Careful! We should move inits to the initialisation list and call the default constructor
 
@@ -88,7 +104,18 @@ void TTXPage::m_Init()
     m_region=0;
     for (int i=0;i<=MAXROW;i++)
     {
-        m_pLine[i]=nullptr;
+        if (i > 0 && i < 25)
+        {
+            m_pLine[i]->Setm_textline("                                        ", false); // clear text rows
+        }
+        else
+        {
+            if (m_pLine[i]!=nullptr)
+            {
+                delete m_pLine[i];
+                m_pLine[i]=nullptr;
+            }
+        }
     }
     for (int i=0;i<6;i++)
     {
@@ -366,9 +393,6 @@ TTXLine* TTXPage::GetRow(unsigned int row)
         return nullptr;
     }
     TTXLine* line=m_pLine[row];
-    // Don't create row 0, or enhancement rows as they are special.
-    if (line==nullptr && row>0 && row<25)
-        line=m_pLine[row]=new TTXLine("                                        ");
     return line;
 }
 

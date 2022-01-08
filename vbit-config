@@ -137,7 +137,8 @@ install_service(){
       cp -r $INSURL $INSDIR
       err=$?
       if test $err -ne 0; then
-        display_message "error" "dir $err"
+        display_message "error" "dir $err no dir $INSURL"
+        display_message "error" "install memories repo first"
         return
       fi
       clear

@@ -1,6 +1,6 @@
 #!/bin/bash
 SERVICEDATA=(\
-  "George,dir,/home/pi/memoriesofgeorge/teletext-memories/,George", \
+  "George,dir,/home/pi/memoriesofgeorge/generated-teletext-pages/,George", \
   "Teefax,svn,http://teastop.plus.com/svn/teletext/,Teefax," \
   "Ceefax,svn,https://internal.nathanmediaservices.co.uk/svn/ceefax/national,Ceefax," \
   "Ceefax (East),svn,https://internal.nathanmediaservices.co.uk/svn/ceefax/East,Ceefax/regional,Ceefax" \

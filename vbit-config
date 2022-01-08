@@ -134,6 +134,10 @@ install_service(){
       ;;
     "dir")
       clear
+      # vbit2's dir may not exist at this point
+      if [ ! -d "$SERVICESDIR" ]; then
+        mkdir -p "$SERVICESDIR"
+      fi
       cp -r $INSURL $INSDIR
       err=$?
       if test $err -ne 0; then
